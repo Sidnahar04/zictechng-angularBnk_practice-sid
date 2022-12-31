@@ -1,0 +1,273 @@
+<app-top-bar></app-top-bar>
+<app-side-bar></app-side-bar>
+
+<div class="content-body">
+  <div class="container-fluid">
+    <div class="form-head mb-4">
+      <h2 class="text-black font-w600 mb-0">Profile</h2>
+    </div>
+    <div class="page-titles">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Account profile</a></li>
+        <li class="breadcrumb-item"><a href="#"></a> </li>
+        <li class="active"></li>
+      </ol>
+    </div>
+
+    <!-- row -->
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="profile card card-body px-3 pt-3 pb-0">
+          <div class="profile-head">
+            <div class="photo-content">
+              <div class="cover-photo rounded"></div>
+            </div>
+            <div class="profile-info">
+              <div class="profile-photo">
+                <div *ngIf="myData.photo !==''; else defaultImage">
+                  <img [src]="myProfilePhoto" class="img-fluid rounded-circle" alt="">
+                </div>
+
+                <ng-template #defaultImage>
+                  <img [src]="defaultProfileImage" class="img-fluid rounded-circle" alt="">
+                </ng-template>
+
+
+              </div>
+              <div class="profile-details">
+                <div class="profile-name px-3 pt-2">
+                  <h4 class="text-primary mb-0">{{myData.name}}</h4>
+                  <p>Account Holder</p>
+                </div>
+                <div class="profile-email px-2 pt-2">
+                  <h4 class="text-muted mb-0">{{myData.email}}</h4>
+                  <p>Email</p>
+                </div>
+                <div class="dropdown ms-auto">
+                  <a href="#" class="btn btn-primary light sharp" data-bs-toggle="dropdown" aria-expanded="true"><svg
+                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px"
+                      height="18px" viewBox="0 0 24 24" version="1.1">
+                      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <rect x="0" y="0" width="24" height="24"></rect>
+                        <circle fill="#000000" cx="5" cy="12" r="2"></circle>
+                        <circle fill="#000000" cx="12" cy="12" r="2"></circle>
+                        <circle fill="#000000" cx="19" cy="12" r="2"></circle>
+                      </g>
+                    </svg></a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <!-- <li class="dropdown-item" data-bs-toggle="modal" data-bs-target="#replyModal"
+                      style="cursor: pointer;"><i class="fa fa-user-circle text-primary me-2"></i> Upload profile photo
+                    </li> -->
+
+                    <li class="dropdown-item" (click)="openModal('myModal')" style="cursor: pointer;"><i
+                        class="fa fa-user-circle text-primary me-2"></i> Upload profile photo
+                    </li>
+
+                    <li class="dropdown-item" style="cursor: pointer;"><i class="fa fa-users text-primary me-2"></i>
+                      Update password
+                    </li>
+                    <li routerLink="/transfer" class="dropdown-item" style="cursor: pointer;"><i
+                        class="fa fa-plus text-primary me-2"></i>
+                      Transfer fund</li>
+                    <li class="dropdown-item" style="cursor: pointer;"><i class="fa fa-ban text-primary me-2"></i>
+                      Delete my account</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+
+      <div class="col-xl-10">
+        <div class="card">
+          <div class="card-body">
+            <div class="profile-tab">
+              <div class="custom-tab-1">
+                <ul class="nav nav-tabs">
+                  <li class="nav-item"><a href="#about-me" data-bs-toggle="tab" class="nav-link active show">Profile
+                      Data</a>
+                  </li>
+                  <li class="nav-item"><a href="#profile-settings" data-bs-toggle="tab" class="nav-link">Security
+                      Setting</a>
+                  </li>
+                </ul>
+                <div class="tab-content">
+
+                  <div id="about-me" class="tab-pane fade active show">
+
+                    <div class="profile-personal-info">
+                      <h4 class="text-primary mb-4">Personal Information</h4>
+                      <div class="row mb-2">
+                        <div class="col-sm-3 col-5">
+                          <h5 class="f-w-500">Account Full Name <span class="pull-end">:</span>
+                          </h5>
+                        </div>
+                        <div class="col-sm-9 col-7"><span>{{myData.name}}</span>
+                        </div>
+                      </div>
+                      <div class="row mb-2">
+                        <div class="col-sm-3 col-5">
+                          <h5 class="f-w-500">Email <span class="pull-end">:</span>
+                          </h5>
+                        </div>
+                        <div class="col-sm-9 col-7"><span>{{myData.email}}</span>
+                        </div>
+                      </div>
+
+                      <div class="row mb-2">
+                        <div class="col-sm-3 col-5">
+                          <h5 class="f-w-500">Date of Birth <span class="pull-end">:</span>
+                          </h5>
+                        </div>
+                        <div class="col-sm-9 col-7"><span>{{myData.dob}}</span>
+                        </div>
+                      </div>
+                      <div class="row mb-2">
+                        <div class="col-sm-3 col-5">
+                          <h5 class="f-w-500">Country <span class="pull-end">:</span></h5>
+                        </div>
+                        <div class="col-sm-9 col-7"><span>{{myData.country}}</span>
+                        </div>
+                      </div>
+                      <div class="row mb-2">
+                        <div class="col-sm-3 col-5">
+                          <h5 class="f-w-500">Account Type <span class="pull-end">:</span></h5>
+                        </div>
+                        <div class="col-sm-9 col-7"><span>{{myData.acct_type}}</span>
+                        </div>
+                      </div>
+                      <div class="row mb-2">
+                        <div class="col-sm-3 col-5">
+                          <h5 class="f-w-500">Account Pin <span class="pull-end">:</span></h5>
+                        </div>
+                        <div class="col-sm-9 col-7"><span>{{myData.acct_pin}}</span>
+                        </div>
+                      </div>
+                      <div class="row mb-2">
+                        <div class="col-sm-3 col-5">
+                          <h5 class="f-w-500">Account Username <span class="pull-end">:</span></h5>
+                        </div>
+                        <div class="col-sm-9 col-7"><span>{{myData.username}}</span>
+                        </div>
+                      </div>
+                      <div class="row mb-2">
+                        <div class="col-sm-3 col-5">
+                          <h5 class="f-w-500">Account Number <span class="pull-end">:</span></h5>
+                        </div>
+                        <div class="col-sm-9 col-7"><span>{{myData.acct_number}}</span>
+                        </div>
+                      </div>
+                      <div class="row mb-2">
+                        <div class="col-sm-3 col-5">
+                          <h5 class="f-w-500">Holder Address <span class="pull-end">:</span></h5>
+                        </div>
+                        <div class="col-sm-9 col-7"><span>{{myData.address}}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="profile-settings" class="tab-pane fade">
+                    <div class="pt-3">
+                      <div class="settings-form">
+                        <h4 class="text-primary">Account Setting</h4>
+                        <form>
+                          <div class="row">
+                            <div class="mb-3 col-md-6">
+                              <label class="form-label">Password</label>
+                              <input type="password" placeholder="New password" class="form-control">
+                            </div>
+                            <div class="mb-3 col-md-6">
+                              <label class="form-label">Confirm Password</label>
+                              <input type="password" placeholder="Confirm password" class="form-control">
+                            </div>
+                          </div>
+                          <!-- <div class="mb-3">
+                            <label class="form-label">Address</label>
+                            <input type="text" placeholder="1234 Main St" class="form-control">
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label">Address 2</label>
+                            <input type="text" placeholder="Apartment, studio, or floor" class="form-control">
+                          </div>
+                          <div class="row">
+                            <div class="mb-3 col-md-6">
+                              <label class="form-label">City</label>
+                              <input type="text" class="form-control">
+                            </div>
+                            <div class="mb-3 col-md-4">
+                              <label class="form-label">State</label>
+                              <select class="form-control default-select wide" id="inputState">
+                                <option selected="">Choose...</option>
+                                <option>Option 1</option>
+                                <option>Option 2</option>
+                                <option>Option 3</option>
+                              </select>
+                            </div>
+                            <div class="mb-3 col-md-2">
+                              <label class="form-label">Zip</label>
+                              <input type="text" class="form-control">
+                            </div>
+                          </div> -->
+
+                          <button class="btn btn-primary" type="submit">Update</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Modal -->
+
+
+              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Update profile Photo</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form method="post" enctype="multipart/form-data">
+                        <div class="profile-photo">
+                          <div *ngIf="myData.photo !==''; else defaultImage ">
+                            <img [src]="myProfilePhoto" width="100" alt="" />
+                          </div>
+
+                          <ng-template #defaultImage>
+                            <img [src]="defaultProfileImage" class="img-fluid rounded-circle" alt="" width="50px">
+                          </ng-template>
+
+
+                        </div>
+                        <!-- <label class="form-label">Name</label> -->
+                        <!-- <input type="text" name="profile_name" placeholder="My name" class="form-control"> -->
+                        <!-- <input type="file" name="file_name" accept="image/*" (change)="onFileSelected($event)"
+                          placeholder="File" class="form-control"> -->
+                        <div class="container">
+                          <input type="file" name="file_name" id="img" accept="image/*" style="display: none;"
+                            (change)="onFileSelected($event)">
+                          <label for="img">Select Photo</label>
+                        </div>
+
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">btn-close</button>
+                          <button type="submit" (click)="uploadImage()" class="btn btn-primary">Upload</button>
+                        </div>
+                      </form>
+                    </div>
+
+                  </div>
+                </div><!-- /.modal-dialog -->
+              </div><!-- /.modal -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
